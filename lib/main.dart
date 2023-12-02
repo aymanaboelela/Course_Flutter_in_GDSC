@@ -1,3 +1,4 @@
+import 'package:course_flutter/home.dart';
 import 'package:faker/faker.dart';
 import 'package:flutter/material.dart';
 
@@ -11,6 +12,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
@@ -28,11 +30,13 @@ class MyHomePage extends StatefulWidget {
   State<MyHomePage> createState() => _MyHomePageState();
 }
 
+int number = 2;
+
 class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
-    String a = "";
-    List s = ["s", "s"];
+    String image = "assets/images/img_1.png";
+// VCS
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
@@ -43,29 +47,54 @@ class _MyHomePageState extends State<MyHomePage> {
         child: GridView.builder(
           gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
               crossAxisCount: 2, childAspectRatio: 0.9),
-          itemCount: 10,
-          itemBuilder: (context, index) => Card(
-            clipBehavior: Clip.antiAliasWithSaveLayer,
-            child: Column(
-              children: [
-                Image.asset("assets/images/img_1.png"),
-                Text(
-                  Faker().person.name(),
-                  style: const TextStyle(fontSize: 18),
-                  textAlign: TextAlign.center,
+          itemCount: number,
+          itemBuilder: (context, index) {
+            String name = Faker().person.name();
+            return GestureDetector(
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => HomeScreen(
+                      image: image.toString(),
+                      name: name,
+                    ),
+                  ),
+                );
+              },
+              child: Card(
+                clipBehavior: Clip.antiAliasWithSaveLayer,
+                child: Column(
+                  children: [
+                    Image.asset(image),
+                    Text(
+                      name,
+                      style: const TextStyle(fontSize: 18),
+                      textAlign: TextAlign.center,
+                    ),
+                  ],
                 ),
-              ],
-            ),
-          ),
+              ),
+            );
+          },
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {},
+        onPressed: () {
+          setState(() {
+            number++;
+            print(number);
+          });
+        },
         tooltip: 'Increment',
         child: const Icon(Icons.add),
       ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
+}
+
+void sum(int num1, int num2) {
+  print(num1 + num2);
 }
 
 // SingleChildScrollView(
