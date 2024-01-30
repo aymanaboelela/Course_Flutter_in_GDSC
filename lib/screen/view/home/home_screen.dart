@@ -36,7 +36,12 @@ class HomeScreen extends StatelessWidget {
               height: 45,
             )),
             IconButton(
-                onPressed: () {}, icon: const Icon(Icons.notifications_active))
+                onPressed: () {},
+                icon: const Icon(
+                  Icons.notifications_active,
+                  color: Colors.white,
+                  size: 30,
+                ))
           ],
         ),
         toolbarHeight: 60,
@@ -46,9 +51,9 @@ class HomeScreen extends StatelessWidget {
         alignment: Alignment.center,
         decoration: const BoxDecoration(
             gradient: LinearGradient(colors: [
-              Color.fromRGBO(29, 143, 242, 0.1),
-              Color.fromRGBO(255, 255, 255, 1),
-            ])),
+          Color.fromRGBO(29, 143, 242, 0.1),
+          Color.fromRGBO(255, 255, 255, 1),
+        ])),
         child: Padding(
           padding: const EdgeInsets.all(20.0),
           child: SingleChildScrollView(
@@ -125,7 +130,8 @@ class HomeScreen extends StatelessWidget {
                                     color: AppColor.primaryColor,
                                     borderRadius: BorderRadius.circular(5)),
                                 child: CachedNetworkImage(
-                                    imageUrl: imageCat[index], fit: BoxFit.cover),
+                                    imageUrl: imageCat[index],
+                                    fit: BoxFit.cover),
                               ),
                               const Text("PC")
                             ],
@@ -157,8 +163,9 @@ class HomeScreen extends StatelessWidget {
                               fit: BoxFit.cover),
                           const Padding(
                             padding: EdgeInsets.only(top: 8),
-                            child: Text("Mobile",style:
-                            TextStyle(fontWeight: FontWeight.bold,fontSize: 16)),
+                            child: Text("Mobile",
+                                style: TextStyle(
+                                    fontWeight: FontWeight.bold, fontSize: 16)),
                           ),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -177,11 +184,12 @@ class HomeScreen extends StatelessWidget {
                       ),
                     ),
                     itemCount: 5,
-                    gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                        crossAxisCount: 2,
-                        crossAxisSpacing: 5,
-                        mainAxisSpacing: 5,
-                        childAspectRatio: 0.57),
+                    gridDelegate:
+                        const SliverGridDelegateWithFixedCrossAxisCount(
+                            crossAxisCount: 2,
+                            crossAxisSpacing: 5,
+                            mainAxisSpacing: 5,
+                            childAspectRatio: 0.57),
                   ),
                 )
               ],
