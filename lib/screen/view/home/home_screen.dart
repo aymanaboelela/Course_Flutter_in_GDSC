@@ -147,30 +147,33 @@ class HomeScreen extends StatelessWidget {
                     shrinkWrap: true,
                     itemBuilder: (context, index) => Card(
                       clipBehavior: Clip.antiAliasWithSaveLayer,
-                      child: SizedBox(
-                        width: 160,
-                        child: Column(
-                          children: [
-                            CachedNetworkImage(
-                                imageUrl:
-                                    "https://smhttp-ssl-73217.nexcesscdn.net/pub/media/catalog/product/cache/661473ab953cdcdf4c3b607144109b90/h/u/huawei-nova-y90-1.jpg",
-                                fit: BoxFit.cover),
-                            const Text("Mobile"),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                IconButton(
-                                    onPressed: () {},
-                                    icon:
-                                        const Icon(Icons.shopping_cart_checkout)),
-                                const Padding(
-                                  padding: EdgeInsets.symmetric(horizontal: 8),
-                                  child: Text("220 EG"),
-                                ),
-                              ],
-                            )
-                          ],
-                        ),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          CachedNetworkImage(
+                              imageUrl:
+                                  "https://smhttp-ssl-73217.nexcesscdn.net/pub/media/catalog/product/cache/661473ab953cdcdf4c3b607144109b90/h/u/huawei-nova-y90-1.jpg",
+                              fit: BoxFit.cover),
+                          const Padding(
+                            padding: EdgeInsets.only(top: 8),
+                            child: Text("Mobile",style:
+                            TextStyle(fontWeight: FontWeight.bold,fontSize: 16)),
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              IconButton(
+                                  onPressed: () {},
+                                  icon:
+                                      const Icon(Icons.shopping_cart_checkout)),
+                              const Padding(
+                                padding: EdgeInsets.symmetric(horizontal: 8),
+                                child: Text("220 EG"),
+                              ),
+                            ],
+                          )
+                        ],
                       ),
                     ),
                     itemCount: 5,
@@ -178,7 +181,7 @@ class HomeScreen extends StatelessWidget {
                         crossAxisCount: 2,
                         crossAxisSpacing: 5,
                         mainAxisSpacing: 5,
-                        childAspectRatio: 0.59),
+                        childAspectRatio: 0.57),
                   ),
                 )
               ],
