@@ -1,17 +1,22 @@
 import 'package:flutter/material.dart';
 
 class CustomTextFormField extends StatelessWidget {
-  const CustomTextFormField({super.key, required this.hintText, required this.icon});
+  const CustomTextFormField(
+      {super.key, required this.hintText, required this.icon, this.height});
+
   final String hintText;
-  final  IconData icon;
+  final IconData icon;
+  final double? height;
+
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 56,
+      height: height ?? 56,
       child: TextFormField(
         decoration: InputDecoration(
             hintText: hintText,
-            prefixIcon:  Icon(icon),
+            hintStyle: const TextStyle(height: 0),
+            prefixIcon: Icon(icon),
             filled: true,
             fillColor: Colors.white,
             border: OutlineInputBorder(

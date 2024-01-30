@@ -6,6 +6,7 @@ class Assets {
   static const String authCutomTextFromField = 'lib/screen/widget/auth/cutom_textFromField.dart';
   static const String authLoginScreen = 'lib/screen/view/auth/login_screen.dart';
   static const String generatedAssets = 'lib/generated/assets.dart';
+  static const String homeHomeScreen = 'lib/screen/view/home/home_screen.dart';
   static const String imagesAnimation  = 'assets/images/animation .json';
   static const String imagesFacebook = 'assets/images/facebook.png';
   static const String imagesGoogle = 'assets/images/google.png';

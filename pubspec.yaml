@@ -36,6 +36,8 @@ dependencies:
   webview_flutter: ^4.4.2
   shimmer: ^3.0.0
   intro_screen_onboarding_flutter: ^1.0.0
+  carousel_slider: ^4.2.1
+  cached_network_image: ^3.3.1
 
 
 
