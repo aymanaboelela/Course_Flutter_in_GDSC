@@ -1,4 +1,4 @@
-import 'package:course_flutter/screen/view/splash_screen.dart';
+import 'package:course_flutter/screen/view/splash/splash_screen.dart';
 import 'package:flutter/material.dart';
 
 void main() {

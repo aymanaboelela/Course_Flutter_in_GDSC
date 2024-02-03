@@ -1,5 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:course_flutter/core/ui/color.dart';
+import 'package:course_flutter/screen/cart/cart_screen.dart';
 import 'package:course_flutter/screen/widget/auth/cutom_textFromField.dart';
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
@@ -50,10 +51,13 @@ class HomeScreen extends StatelessWidget {
       body: Container(
         alignment: Alignment.center,
         decoration: const BoxDecoration(
-            gradient: LinearGradient(colors: [
-          Color.fromRGBO(29, 143, 242, 0.1),
-          Color.fromRGBO(255, 255, 255, 1),
-        ])),
+          gradient: LinearGradient(
+            colors: [
+              Color.fromRGBO(29, 143, 242, 0.1),
+              Color.fromRGBO(255, 255, 255, 1),
+            ],
+          ),
+        ),
         child: Padding(
           padding: const EdgeInsets.all(20.0),
           child: SingleChildScrollView(
@@ -61,36 +65,38 @@ class HomeScreen extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Container(
-                    clipBehavior: Clip.antiAliasWithSaveLayer,
-                    decoration:
-                        BoxDecoration(borderRadius: BorderRadius.circular(20)),
-                    child: CarouselSlider(
-                        items: [
-                          ...List.generate(
-                            image.length,
-                            (index) => CachedNetworkImage(
-                              imageUrl: image[index],
-                              fit: BoxFit.cover,
-                            ),
-                          )
-                        ],
-                        options: CarouselOptions(
-                          height: 250,
-                          aspectRatio: 16 / 9,
-                          viewportFraction: 1,
-                          initialPage: 0,
-                          enableInfiniteScroll: true,
-                          reverse: false,
-                          autoPlay: true,
-                          autoPlayInterval: const Duration(seconds: 2),
-                          autoPlayAnimationDuration:
-                              const Duration(milliseconds: 800),
-                          autoPlayCurve: Curves.linear,
-                          enlargeCenterPage: true,
-                          enlargeFactor: 0.3,
-                          onPageChanged: (index, reason) {},
-                          scrollDirection: Axis.horizontal,
-                        ))),
+                  clipBehavior: Clip.antiAliasWithSaveLayer,
+                  decoration:
+                      BoxDecoration(borderRadius: BorderRadius.circular(20)),
+                  child: CarouselSlider(
+                    items: [
+                      ...List.generate(
+                        image.length,
+                        (index) => CachedNetworkImage(
+                          imageUrl: image[index],
+                          fit: BoxFit.cover,
+                        ),
+                      )
+                    ],
+                    options: CarouselOptions(
+                      height: 250,
+                      aspectRatio: 16 / 9,
+                      viewportFraction: 1,
+                      initialPage: 0,
+                      enableInfiniteScroll: true,
+                      reverse: false,
+                      autoPlay: true,
+                      autoPlayInterval: const Duration(seconds: 2),
+                      autoPlayAnimationDuration:
+                          const Duration(milliseconds: 800),
+                      autoPlayCurve: Curves.linear,
+                      enlargeCenterPage: true,
+                      enlargeFactor: 0.3,
+                      onPageChanged: (index, reason) {},
+                      scrollDirection: Axis.horizontal,
+                    ),
+                  ),
+                ),
                 const SizedBox(
                   height: 12,
                 ),
@@ -129,9 +135,22 @@ class HomeScreen extends StatelessWidget {
                                 decoration: BoxDecoration(
                                     color: AppColor.primaryColor,
                                     borderRadius: BorderRadius.circular(5)),
-                                child: CachedNetworkImage(
+                                child: InkWell(
+                                  onTap: () {
+                                    Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                          builder: (context) => CartScreen(),
+                                        ));
+                                  },
+                                  child: CachedNetworkImage(
+                                    //
+                                    ///
+                                    /////
                                     imageUrl: imageCat[index],
-                                    fit: BoxFit.cover),
+                                    fit: BoxFit.cover,
+                                  ),
+                                ),
                               ),
                               const Text("PC")
                             ],
@@ -152,6 +171,7 @@ class HomeScreen extends StatelessWidget {
                     physics: const NeverScrollableScrollPhysics(),
                     shrinkWrap: true,
                     itemBuilder: (context, index) => Card(
+                      ///
                       clipBehavior: Clip.antiAliasWithSaveLayer,
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.center,
