@@ -2,6 +2,8 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:course_flutter/core/ui/color.dart';
 import 'package:course_flutter/screen/cart/cart_screen.dart';
 import 'package:course_flutter/screen/widget/auth/cutom_textFromField.dart';
+import 'package:course_flutter/screen/widget/custom_cart.dart';
+import 'package:course_flutter/screen/widget/custom_scroll.dart';
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 
@@ -64,39 +66,7 @@ class HomeScreen extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Container(
-                  clipBehavior: Clip.antiAliasWithSaveLayer,
-                  decoration:
-                      BoxDecoration(borderRadius: BorderRadius.circular(20)),
-                  child: CarouselSlider(
-                    items: [
-                      ...List.generate(
-                        image.length,
-                        (index) => CachedNetworkImage(
-                          imageUrl: image[index],
-                          fit: BoxFit.cover,
-                        ),
-                      )
-                    ],
-                    options: CarouselOptions(
-                      height: 250,
-                      aspectRatio: 16 / 9,
-                      viewportFraction: 1,
-                      initialPage: 0,
-                      enableInfiniteScroll: true,
-                      reverse: false,
-                      autoPlay: true,
-                      autoPlayInterval: const Duration(seconds: 2),
-                      autoPlayAnimationDuration:
-                          const Duration(milliseconds: 800),
-                      autoPlayCurve: Curves.linear,
-                      enlargeCenterPage: true,
-                      enlargeFactor: 0.3,
-                      onPageChanged: (index, reason) {},
-                      scrollDirection: Axis.horizontal,
-                    ),
-                  ),
-                ),
+                CustomScroll(image: image),
                 const SizedBox(
                   height: 12,
                 ),
@@ -170,39 +140,7 @@ class HomeScreen extends StatelessWidget {
                   child: GridView.builder(
                     physics: const NeverScrollableScrollPhysics(),
                     shrinkWrap: true,
-                    itemBuilder: (context, index) => Card(
-                      ///
-                      clipBehavior: Clip.antiAliasWithSaveLayer,
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          CachedNetworkImage(
-                              imageUrl:
-                                  "https://smhttp-ssl-73217.nexcesscdn.net/pub/media/catalog/product/cache/661473ab953cdcdf4c3b607144109b90/h/u/huawei-nova-y90-1.jpg",
-                              fit: BoxFit.cover),
-                          const Padding(
-                            padding: EdgeInsets.only(top: 8),
-                            child: Text("Mobile",
-                                style: TextStyle(
-                                    fontWeight: FontWeight.bold, fontSize: 16)),
-                          ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              IconButton(
-                                  onPressed: () {},
-                                  icon:
-                                      const Icon(Icons.shopping_cart_checkout)),
-                              const Padding(
-                                padding: EdgeInsets.symmetric(horizontal: 8),
-                                child: Text("220 EG"),
-                              ),
-                            ],
-                          )
-                        ],
-                      ),
-                    ),
+                    itemBuilder: (context, index) => CustomCart(),
                     itemCount: 5,
                     gridDelegate:
                         const SliverGridDelegateWithFixedCrossAxisCount(
